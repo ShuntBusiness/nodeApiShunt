@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "console.log(\"bartEstuvoAqui\")",
-    "start": "nodemon server"
+    "start": "npm start"
   },
   "author": "laMejor:)",
   "license": "ISC",
