@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const peliRoutes = require('./routes/pelis.routes');
-const juegoRoutes = require('./routes/juegos.routes');
-const serieRoutes = require('./routes/series.routes');
-const razorRoutes = require('./routes/razor.routes');
+import express from 'express';
+import bodyParser from 'body-parser';
+import peliRoutes from './routes/pelis.routes.js';
+import juegoRoutes from './routes/juegos.routes.js';
+import serieRoutes from './routes/series.routes.js';
+import razorRoutes from './routes/razor.routes.js';
 // create express app
 const app = express();
 // Setup server port
@@ -18,10 +18,10 @@ app.get('/', (req, res) => {
 });
 // Require peli routes
 // using as middleware
-app.use('/api/v1/pelis', peliRoutes);
+app.use('/api/v1/pelis', peliRoutes); // /shunt para todo lo de ahora, / razor lo que hace Juani???
 app.use('/api/v1/juegos', juegoRoutes);
 app.use('/api/v1/series', serieRoutes);
-app.use('/razor/v1/razeUrl', razorRoutes);
+app.use('/razor/v1/', razorRoutes);
 // listen for requests
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
