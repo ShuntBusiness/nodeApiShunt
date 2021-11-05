@@ -1,5 +1,9 @@
 "use strict";
-var dbConn = require("../config/db.config");
+import dbConn from '../config/db.config.js';
+import module from 'module';
+import {Headers} from 'node-fetch'
+
+var headers = new Headers();
 
 var razor = function(razor) {
   this.url = razor.url;
@@ -9,7 +13,6 @@ var razor = function(razor) {
 
 razor.razeUrl = function(url, result) {
 
-    var headers = new Headers();
     headers.append('x-textrazor-key', '2eb844810272c03a3315f39d645601d637c57543380d0b5dd98bd23e');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
      
@@ -24,3 +27,4 @@ razor.razeUrl = function(url, result) {
 };
 
 module.exports = razor;
+export default razor;

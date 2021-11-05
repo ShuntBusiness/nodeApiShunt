@@ -1,5 +1,6 @@
 "use strict";
-var dbConn = require("../config/db.config");
+import dbConn from "../config/db.config.js";
+import module from 'module';
 //videogame object create
 var videogame = function(videogame) {
   this.IdVideogame = videogame.IdVideogame;
@@ -116,3 +117,4 @@ videogame.getKeyWords = function(IdVideogame, result) {
 };
 
 module.exports = videogame;
+export default videogame;

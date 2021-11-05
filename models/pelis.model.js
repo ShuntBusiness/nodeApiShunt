@@ -1,5 +1,6 @@
 "use strict";
-var dbConn = require("../config/db.config"); 
+import "../config/db.config.js";
+import module from 'module';
 //movie object create
 var movie = function(movie) {
   this.IdMovie = movie.IdMovie;
@@ -116,3 +117,4 @@ movie.getKeyWords = function(IdMovie, result) {
 
 
 module.exports = movie;
+export default movie;
