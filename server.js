@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const peliRoutes = require('./routes/pelis.routes');
 const juegoRoutes = require('./routes/juegos.routes');
 const serieRoutes = require('./routes/series.routes');
+const razorRoutes = require('./routes/razor.routes');
 // create express app
 const app = express();
 // Setup server port
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/pelis', peliRoutes);
 app.use('/api/v1/juegos', juegoRoutes);
 app.use('/api/v1/series', serieRoutes);
+app.use('/razor/v1/razeUrl', razorRoutes);
 // listen for requests
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
