@@ -1,5 +1,6 @@
 "use strict";
-const razor = require("../models/razor.model");
+import razor from "../models/razor.model.js";
+import exports from 'module';
 
 exports.razeUrl = function(req, res) {
   razor.razeUrl(req.params.url, function(err, razor) {
@@ -7,3 +8,5 @@ exports.razeUrl = function(req, res) {
     res.send(razor);
   });
 };
+
+export default exports;

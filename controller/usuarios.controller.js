@@ -1,42 +1,41 @@
 "use strict";
-import juego from "../models/juegos.model.js";
-import exports from 'module';
+const user = require("../models/usuarios.model");
 exports.findAll = function(req, res) {
-  juego.findAll(function(err, juego) {
+  user.findAll(function(err, user) {
     console.log("controller");
     if (err) res.send(err);
-    console.log("res", juego);
-    res.send(juego);
+    console.log("res", user);
+    res.send(user);
   });
 };
 exports.create = function(req, res) {
-  const new_juego = new juego(req.body);
+  const new_user = new user(req.body);
   //handles null error
   if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
     res
       .status(400)
       .send({ error: true, message: "Please provide all required field" });
   } else {
-    juego.create(new_juego, function(err, juego) {
+    user.create(new_user, function(err, user) {
       if (err) res.send(err);
       res.json({
         error: false,
-        message: "juego added successfully!",
-        data: juego
+        message: "user added successfully!",
+        data: user
       });
     });
   }
 };
 exports.findById = function(req, res) {
-  juego.findById(req.params.id, function(err, juego) {
+  user.findById(req.params.id, function(err, user) {
     if (err) res.send(err);
-    res.json(juego);
+    res.json(user);
   });
 };
 exports.getKeyWords = function(req, res) {
-  juego.getKeyWords(req.params.id, function(err, juego) {
+  user.getKeyWords(req.params.id, function(err, user) {
     if (err) res.send(err);
-    res.json(juego);
+    res.json(user);
   });
 };
 exports.update = function(req, res) {
@@ -45,17 +44,15 @@ exports.update = function(req, res) {
       .status(400)
       .send({ error: true, message: "Please provide all required field" });
   } else {
-    juego.update(req.params.id, new juego(req.body), function(err, juego) {
+    user.update(req.params.id, new user(req.body), function(err, user) {
       if (err) res.send(err);
-      res.json({ error: false, message: "juego successfully updated" });
+      res.json({ error: false, message: "user successfully updated" });
     });
   }
 };
 exports.delete = function(req, res) {
-  juego.delete(req.params.id, function(err, juego) {
+  user.delete(req.params.id, function(err, user) {
     if (err) res.send(err);
-    res.json({ error: false, message: "juego successfully deleted" });
+    res.json({ error: false, message: "user successfully deleted" });
   });
 };
-
-export default exports
