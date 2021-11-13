@@ -1,6 +1,7 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
-const juegoController = require('../controller/juegos.controller');
+import juegoController from '../controller/juegos.controller.js';
+import module from 'module';
 // Retrieve all juegos
 router.get('/obtenerjuegos', juegoController.findAll);//crear endpoints
 // Create a new juego
@@ -14,3 +15,4 @@ router.put('/actualizarjuego/:id', juegoController.update);
 // Delete a juego with id
 router.delete('/borrarjuego/:id', juegoController.delete);
 module.exports = router
+export default router

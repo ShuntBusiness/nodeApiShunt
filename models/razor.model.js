@@ -1,26 +1,39 @@
 "use strict";
-var dbConn = require("../config/db.config");
+import dbConn from '../config/db.config.js';
+import module from 'module';
+import fetch from 'node-fetch'
+import { Headers } from 'node-fetch'
 
-var razor = function(razor) {
+var headers = new Headers();
+headers.append('X-Textrazor-Key', '2eb844810272c03a3315f39d645601d637c57543380d0b5dd98bd23e');
+headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+var razor = function (razor) {
   this.url = razor.url;
   this.entities = [];
   this.sentences = [];
 };
 
-razor.razeUrl = function(url, result) {
+razor.razeUrl = function (url, result) {
 
-    var headers = new Headers();
-    headers.append('x-textrazor-key', '2eb844810272c03a3315f39d645601d637c57543380d0b5dd98bd23e');
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-     
+  console.log(headers);
+  var urlencoded = new URLSearchParams();
+  urlencoded.append("extractors", "entities");
+  urlencoded.append("url", "https://" + url);
 
-    fetch('https://api.textrazor.com/?extractors=entities,sentences&url=' + url, {method: "POST", headers: headers}).then(function(response) {
 
-        response.append("Access-Control-Allow-Origin", "*");
-        result(null, response);
+  var requestOptions = {
+    method: 'POST',
+    headers: headers,
+    body: urlencoded,
+    redirect: 'follow'
+  };
 
-    });
+
+  fetch("https://api.textrazor.com?extractors=entities&url=https://" + url, requestOptions).then(response => response.text())
+  .then(response => result(null, response));
 
 };
 
 module.exports = razor;
+export default razor;

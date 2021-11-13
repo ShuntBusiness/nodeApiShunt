@@ -1,6 +1,7 @@
 "use strict";
-const serie = require("../models/series.model");
-exports.findAll = function(req, res) {
+import serie from "../models/series.model.js";
+import exports from 'module';
+exports.findAll = function(res) {
   serie.findAll(function(err, serie) {
     console.log("controller");
     if (err) res.send(err);
@@ -58,3 +59,5 @@ exports.delete = function(req, res) {
     res.json({ error: false, message: "serie successfully deleted" });
   });
 };
+
+export default exports;

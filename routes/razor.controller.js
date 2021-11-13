@@ -1,9 +1,11 @@
 "use strict";
-const razor = require("../models/razor.model");
+import razor from "../controller/razor.controller.js";
+import express from 'express';
+import module from 'module';
 
-exports.razeUrl = function(req, res) {
-  razor.razeUrl(req.params.url, function(err, razor) {
-    if (err) res.send(err);
-    res.send(razor);
-  });
-};
+const router = express.Router()
+
+router.get('/razeUrl/', razor.razeUrl);
+
+module.exports = router;
+export default router;

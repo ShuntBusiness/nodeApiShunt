@@ -1,6 +1,7 @@
-const express = require('express')
+import express from 'express';
 const router = express.Router()
-const serieController = require('../controller/series.controller');
+import serieController from '../controller/series.controller.js';
+import module from 'module';
 // Retrieve all series
 router.get('/obtenerseries', serieController.findAll);//crear endpoints
 // Create a new serie
@@ -14,3 +15,4 @@ router.put('/actualizarserie/:id', serieController.update);
 // Delete a serie with id
 router.delete('/borrarserie/:id', serieController.delete);
 module.exports = router
+export default router

@@ -1,5 +1,6 @@
 "use strict";
-var dbConn = require("../config/db.config");
+import dbConn from "../config/db.config.js";
+import module from 'module';
 //serie object create
 var serie = function(serie) {
   this.IdSerie = serie.IdSerie;
@@ -115,3 +116,4 @@ serie.getKeyWords = function(IdSerie, result) {
 };
 
 module.exports = serie;
+export default serie;

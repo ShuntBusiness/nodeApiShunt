@@ -1,5 +1,6 @@
 "use strict";
-const peli = require("../models/pelis.model");
+import "../models/pelis.model.js"
+import exports from 'module';
 exports.findAll = function(req, res) {
   peli.findAll(function(err, peli) {
     console.log("controller");
@@ -58,3 +59,5 @@ exports.delete = function(req, res) {
     res.json({ error: false, message: "peli successfully deleted" });
   });
 };
+
+export default exports
