@@ -9,8 +9,8 @@ var videogame = function(videogame) {
   this.created_at = new Date();
   this.updated_at = new Date();
 };
-movie.create = function(newEmp, result) {
-  dbConn.query("INSERT INTO Movies set ?", newEmp, function(err, res) {
+videogame.create = function(newEmp, result) {
+  dbConn.query("INSERT INTO videogames SET ?", newEmp, function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -20,8 +20,8 @@ movie.create = function(newEmp, result) {
     }
   });
 };
-movie.findById = function(IdMovie, result) {
-  dbConn.query("SELECT * FROM Movies WHERE IdMovie = ?", [IdMovie], function(
+videogame.findById = function(IdVideogame, result) {
+  dbConn.query("SELECT * FROM Videogames WHERE IdVideogame = ?", [IdVideogame], function(
     err,
     res
   ) {
@@ -33,29 +33,30 @@ movie.findById = function(IdMovie, result) {
     }
   });
 };
-movie.findAll = function(result) {
-  dbConn.query("SELECT * FROM Movies", function(err, res) {
+videogame.findAll = function(result) {
+  dbConn.query("SELECT * from Videogames", function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
     } else {
-      console.log("Movies : ", res);
+      console.log("juegos: ", res);
       result(null, res);
     }
   });
+  
 };
-movie.update = function(IdMovie, movie, result) {
+videogame.update = function(IdVideogame, videogame, result) {
   dbConn.query(
-    "UPDATE Movies SET IdMovie=?,MovieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdMovie = ?",
+    "UPDATE Videogames SET IdMovie=?,MovieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdVideogame = ?",
     [
-      movie.IdMovie,
-      movie.MovieName,
-      movie.email,
-      movie.phone,
-      movie.organization,
-      movie.designation,
-      movie.salary,
-      IdMovie
+      videogame.IdMovie,
+      videogame.MovieName,
+      videogame.email,
+      videogame.phone,
+      videogame.organization,
+      videogame.designation,
+      videogame.salary,
+      IdVideogame
     ],
     function(err, res) {
       if (err) {
@@ -67,10 +68,10 @@ movie.update = function(IdMovie, movie, result) {
     }
   );
 };
-movie.delete = function(IdMovie, result) {
+videogame.delete = function(IdVideogame, result) {
   dbConn.query(
-    "DELETE FROM Movies WHERE IdMovie = ?",
-    [IdMovie],
+    "DELETE FROM videogames WHERE IdVideogame = ?",
+    [IdVideogame],
     function(err, res) {
       if (err) {
         console.log("error: ", err);
@@ -82,16 +83,16 @@ movie.delete = function(IdMovie, result) {
   );
 };
 
-movie.selectPersonaje = function(IdMovie, result) {
+videogame.selectPersonaje = function(IdVideogame, result) {
   dbConn.query(
-    "SELECT v.description FROM Movies v, CharactersxMovies cv, Characters c WHERE v.IdMovie = ? AND v.IdMovie = cv.IdMovie AND cv.IdCharacter = c.IdCharacter",
-    [IdMovie],
+    "SELECT v.description FROM Videogames v, CharactersxVideogames cv, Characters c WHERE v.IdVideogame = ? AND v.IdVideogame = cv.IdVideogame AND cv.IdCharacter = c.IdCharacter",
+    [IdVideogame],
     function(err, res) {
       if (err) {
         console.log("error: ", err);
         result(null, err);
       } else {
-        console.log("Movies : ", res);
+        console.log("videogames: ", res);
         result(null, res);
       }
     }
@@ -99,20 +100,21 @@ movie.selectPersonaje = function(IdMovie, result) {
 };
 
 
-movie.getKeyWords = function(IdMovie, result) {
+videogame.getKeyWords = function(IdVideogame, result) {
   dbConn.query(
-    "SELECT * FROM KeyWordsxMovies WHERE IdMovie = ?",
-    [IdMovie],
+    "SELECT * FROM KeyWordsxVideogames WHERE IdVideogame = ?",
+    [IdVideogame],
     function(err, res) {
       if (err) {
         console.log("error: ", err);
         result(null, err);
       } else {
-        console.log("Movies: ", res);
+        console.log("videogames: ", res);
         result(null, res);
       }
     }
   );
 };
+
 module.exports = videogame;
 export default videogame;
