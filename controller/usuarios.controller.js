@@ -1,5 +1,6 @@
 "use strict";
-const user = require("../models/usuarios.model");
+import user from "../models/usuarios.model.js";
+import exports from 'module';
 exports.findAll = function(req, res) {
   user.findAll(function(err, user) {
     console.log("controller");
@@ -56,3 +57,5 @@ exports.delete = function(req, res) {
     res.json({ error: false, message: "user successfully deleted" });
   });
 };
+
+export default exports;
