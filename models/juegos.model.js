@@ -9,8 +9,8 @@ var videogame = function(videogame) {
   this.created_at = new Date();
   this.updated_at = new Date();
 };
-videogame.create = function(newEmp, result) {
-  dbConn.query("INSERT INTO videogames SET ?", newEmp, function(err, res) {
+movie.create = function(newEmp, result) {
+  dbConn.query("INSERT INTO Movies set ?", newEmp, function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -20,8 +20,8 @@ videogame.create = function(newEmp, result) {
     }
   });
 };
-videogame.findById = function(IdVideogame, result) {
-  dbConn.query("SELECT * FROM Videogames WHERE IdVideogame = ?", [IdVideogame], function(
+movie.findById = function(IdMovie, result) {
+  dbConn.query("SELECT * FROM Movies WHERE IdMovie = ?", [IdMovie], function(
     err,
     res
   ) {
@@ -33,30 +33,29 @@ videogame.findById = function(IdVideogame, result) {
     }
   });
 };
-videogame.findAll = function(result) {
-  dbConn.query("SELECT * from Videogames", function(err, res) {
+movie.findAll = function(result) {
+  dbConn.query("SELECT * FROM Movies", function(err, res) {
     if (err) {
       console.log("error: ", err);
       result(null, err);
     } else {
-      console.log("juegos: ", res);
+      console.log("Movies : ", res);
       result(null, res);
     }
   });
-  
 };
-videogame.update = function(IdVideogame, videogame, result) {
+movie.update = function(IdMovie, movie, result) {
   dbConn.query(
-    "UPDATE Videogames SET IdMovie=?,MovieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdVideogame = ?",
+    "UPDATE Movies SET IdMovie=?,MovieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdMovie = ?",
     [
-      videogame.IdMovie,
-      videogame.MovieName,
-      videogame.email,
-      videogame.phone,
-      videogame.organization,
-      videogame.designation,
-      videogame.salary,
-      IdVideogame
+      movie.IdMovie,
+      movie.MovieName,
+      movie.email,
+      movie.phone,
+      movie.organization,
+      movie.designation,
+      movie.salary,
+      IdMovie
     ],
     function(err, res) {
       if (err) {
@@ -68,10 +67,10 @@ videogame.update = function(IdVideogame, videogame, result) {
     }
   );
 };
-videogame.delete = function(IdVideogame, result) {
+movie.delete = function(IdMovie, result) {
   dbConn.query(
-    "DELETE FROM videogames WHERE IdVideogame = ?",
-    [IdVideogame],
+    "DELETE FROM Movies WHERE IdMovie = ?",
+    [IdMovie],
     function(err, res) {
       if (err) {
         console.log("error: ", err);
@@ -83,16 +82,16 @@ videogame.delete = function(IdVideogame, result) {
   );
 };
 
-videogame.selectPersonaje = function(IdVideogame, result) {
+movie.selectPersonaje = function(IdMovie, result) {
   dbConn.query(
-    "SELECT v.description FROM Videogames v, CharactersxVideogames cv, Characters c WHERE v.IdVideogame = ? AND v.IdVideogame = cv.IdVideogame AND cv.IdCharacter = c.IdCharacter",
-    [IdVideogame],
+    "SELECT v.description FROM Movies v, CharactersxMovies cv, Characters c WHERE v.IdMovie = ? AND v.IdMovie = cv.IdMovie AND cv.IdCharacter = c.IdCharacter",
+    [IdMovie],
     function(err, res) {
       if (err) {
         console.log("error: ", err);
         result(null, err);
       } else {
-        console.log("videogames: ", res);
+        console.log("Movies : ", res);
         result(null, res);
       }
     }
@@ -100,21 +99,20 @@ videogame.selectPersonaje = function(IdVideogame, result) {
 };
 
 
-videogame.getKeyWords = function(IdVideogame, result) {
+movie.getKeyWords = function(IdMovie, result) {
   dbConn.query(
-    "SELECT * FROM KeyWordsxVideogames WHERE IdVideogame = ?",
-    [IdVideogame],
+    "SELECT * FROM KeyWordsxMovies WHERE IdMovie = ?",
+    [IdMovie],
     function(err, res) {
       if (err) {
         console.log("error: ", err);
         result(null, err);
       } else {
-        console.log("videogames: ", res);
+        console.log("Movies: ", res);
         result(null, res);
       }
     }
   );
 };
-
 module.exports = videogame;
 export default videogame;
