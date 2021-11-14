@@ -1,5 +1,6 @@
 "use strict";
-var dbConn = require("../config/db.config");
+import dbConn from "../config/db.config.js";
+import module from 'module';
 //User object create
 var User = function(User) {
   this.IdUser = User.IdUser;
@@ -117,3 +118,4 @@ User.getKeyWords = function(IdUser, result) {
 };
 
 module.exports = User;
+export default User;
