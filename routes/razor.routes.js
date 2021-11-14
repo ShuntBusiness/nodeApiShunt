@@ -5,7 +5,7 @@ import module from 'module';
 
 const router = express.Router()
 
-router.get('/razeUrl/:url', razor.razeUrl);
+router.get('/razeUrl/', razor.razeUrl);
 
 module.exports = router;
 export default router;
