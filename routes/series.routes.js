@@ -14,5 +14,6 @@ router.get('/obtenerkeywords/:id', serieController.getKeyWords);
 router.put('/actualizarserie/:id', serieController.update);
 // Delete a serie with id
 router.delete('/borrarserie/:id', serieController.delete);
-module.exports = router
-export default router
+
+module.exports = router;
+export default router;
