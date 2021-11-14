@@ -1,8 +1,7 @@
 "use strict";
 import dbConn from '../config/db.config.js';
 import module from 'module';
-import fetch from 'node-fetch'
-import { Headers } from 'node-fetch'
+import {Headers} from 'node-fetch'
 
 var headers = new Headers();
 headers.append('X-Textrazor-Key', '2eb844810272c03a3315f39d645601d637c57543380d0b5dd98bd23e');
@@ -20,7 +19,6 @@ razor.razeUrl = function (url, result) {
   var urlencoded = new URLSearchParams();
   urlencoded.append("extractors", "entities");
   urlencoded.append("url", "https://" + url);
-
 
   var requestOptions = {
     method: 'POST',

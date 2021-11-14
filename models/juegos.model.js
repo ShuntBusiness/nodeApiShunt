@@ -1,11 +1,11 @@
 "use strict";
-import "../config/db.config.js";
+import dbConn from "../config/db.config.js";
 import module from 'module';
-//movie object create
-var movie = function(movie) {
-  this.IdMovie = movie.IdMovie;
-  this.movieName = movie.movieName;
-  this.status = movie.status ? movie.status : 1;
+//videogame object create
+var videogame = function(videogame) {
+  this.IdVideogame = videogame.IdVideogame;
+  this.VideogameName = videogame.VideogameName;
+  this.status = videogame.status ? videogame.status : 1;
   this.created_at = new Date();
   this.updated_at = new Date();
 };
@@ -114,7 +114,5 @@ movie.getKeyWords = function(IdMovie, result) {
     }
   );
 };
-
-
-module.exports = movie;
-export default movie;
+module.exports = videogame;
+export default videogame;
