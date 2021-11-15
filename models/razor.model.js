@@ -36,7 +36,7 @@ razor.razeUrl = function (url, result) {
     var respuesta = new Response(response, {headers: headers});
     return respuesta;
     
-  }
+  })
   .then(response => result(null, response));
 
 };
