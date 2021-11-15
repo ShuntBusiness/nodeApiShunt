@@ -30,7 +30,13 @@ razor.razeUrl = function (url, result) {
   };
 
 
-  fetch("http://api.textrazor.com?extractors=entities&url=http://" + url, requestOptions).then(response => response.text())
+  fetch("http://api.textrazor.com?extractors=entities&url=http://" + url, requestOptions).then(response => function(response) {
+    
+    
+    var respuesta = new Response(response.body, {headers: {"Access-Control-Allow-Origin", "*"}});
+    return respuesta;
+    
+  })
   .then(response => result(null, response));
 
 };
