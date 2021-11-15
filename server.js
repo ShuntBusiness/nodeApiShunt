@@ -31,7 +31,7 @@ app.use('/razor/v1/', razorRoutes);
 
 var options = {
   key: fs.readFileSync('client-key.pem'),
-  cert: fs.readFileSync('client-cert.cert')
+  cert: fs.readFileSync('client-cert.pem')
 };
 
 https.createServer(options, app).listen(443);
