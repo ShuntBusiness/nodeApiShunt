@@ -19,7 +19,7 @@ razor.razeUrl = function (url, result) {
   console.log(headers);
   var urlencoded = new URLSearchParams();
   urlencoded.append("extractors", "entities");
-  urlencoded.append("url", "https://" + url);
+  urlencoded.append("url", "http://" + url);
 
 
   var requestOptions = {
@@ -30,7 +30,7 @@ razor.razeUrl = function (url, result) {
   };
 
 
-  fetch("https://api.textrazor.com?extractors=entities&url=https://" + url, requestOptions).then(response => response.text())
+  fetch("http://api.textrazor.com?extractors=entities&url=http://" + url, requestOptions).then(response => response.text())
   .then(response => result(null, response));
 
 };
