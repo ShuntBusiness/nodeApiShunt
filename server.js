@@ -25,13 +25,17 @@ app.use('/api/v1/juegos', juegoRoutes);
 app.use('/api/v1/series', serieRoutes);
 app.use('/razor/v1/', razorRoutes);
 // listen for requests
+//
+/*
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
-
-/*var options = {
-  key: fs.readFileSync('client-key.pem'),
-  cert: fs.readFileSync('client-cert.pem')
+*/
+var options = {
+  //key: fs.readFileSync('client-key.pem'),
+  key: fs.readFileSync('private.key'),
+  //cert: fs.readFileSync('client-cert.pem')
+  cert: fs.readFileSync('certificate.crt')
 };
 
-https.createServer(options, app).listen(443);*/
+https.createServer(options, app).listen(443);
