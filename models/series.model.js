@@ -4,7 +4,7 @@ import module from 'module';
 //serie object create
 var serie = function(serie) {
   this.IdSerie = serie.IdSerie;
-  this.SerieName = serie.SerieName;
+  this.serieName = serie.serieName;
   this.status = serie.status ? serie.status : 1;
   this.created_at = new Date();
   this.updated_at = new Date();
@@ -39,7 +39,7 @@ serie.findAll = function(result) {
       console.log("error: ", err);
       result(null, err);
     } else {
-      console.log("Series : ", res);
+      console.log("Series: ", res);
       result(null, res);
     }
   });
