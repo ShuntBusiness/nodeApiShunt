@@ -1,13 +1,6 @@
 "use strict";
 import peli from "../models/pelis.model.js"
 import exports from 'module';
-var movie = function(peli) {
-  this.IdMovie = peli.IdMovie;
-  this.movieName = peli.movieName;
-  this.status = peli.status ? peli.status : 1;
-  this.created_at = new Date();
-  this.updated_at = new Date();
-};
 exports.findAll = function(req, res) {
   peli.findAll(function(err, peli) {
     console.log("controller");
