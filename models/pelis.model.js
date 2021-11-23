@@ -1,5 +1,5 @@
 "use strict";
-import "../config/db.config.js";
+import dbConn from "../config/db.config.js";
 import module from 'module';
 //movie object create
 var movie = function(movie) {
