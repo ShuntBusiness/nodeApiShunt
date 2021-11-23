@@ -4,6 +4,7 @@ import peliRoutes from './routes/pelis.routes.js';
 import juegoRoutes from './routes/juegos.routes.js';
 import serieRoutes from './routes/series.routes.js';
 import razorRoutes from './routes/razor.routes.js';
+import usuarioRoutes from './routes/usuarios.routes.js';
 import https from 'https';
 import fs from 'fs';
 // create express app
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/pelis', peliRoutes); // /shunt para todo lo de ahora, / razor lo que hace Juani???
 app.use('/api/v1/juegos', juegoRoutes);
 app.use('/api/v1/series', serieRoutes);
+app.use('/api/v1/usuarios', usuarioRoutes);
 app.use('/razor/v1/', razorRoutes);
 // listen for requests
 
