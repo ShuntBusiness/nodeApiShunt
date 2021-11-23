@@ -1,7 +1,7 @@
 "use strict";
 import serie from "../models/series.model.js";
 import exports from 'module';
-exports.findAll = function(res) {
+exports.findAll = function(req, res) {
   serie.findAll(function(err, serie) {
     console.log("controller");
     if (err) res.send(err);
