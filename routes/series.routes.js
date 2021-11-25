@@ -4,6 +4,8 @@ import serieController from '../controller/series.controller.js';
 import module from 'module';
 // Retrieve all series
 router.get('/obtenerseries', serieController.findAll);//crear endpoints
+// Retrieve all personajes
+router.get("/obtenerpersonajes", serieController.getAllCharacters);
 // Create a new serie
 router.post('/nuevoserie', serieController.create);
 // Retrieve a single serie with id
