@@ -44,6 +44,28 @@ movie.findAll = function(result) {
     }
   });
 };
+
+movie.getAllCharacters = function (result) {
+
+  dbConn.query("SELECT * FROM CharactersxMovies", function (err, res) {//devuelve todos los personajes de la tabla CharactersxMovies
+
+    if (err) {
+
+      console.log("Error: ", err);
+      result(err, null);
+
+    } else {
+
+      console.log("Movies: ", res);
+      result(null, res);
+
+    }
+
+  });
+
+};
+
+
 movie.update = function(IdMovie, movie, result) {
   dbConn.query(
     "UPDATE Movies SET IdMovie=?,MovieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdMovie = ?",
