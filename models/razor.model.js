@@ -2,7 +2,7 @@
 import dbConn from '../config/db.config.js';
 import module from 'module';
 import fetch from 'node-fetch'
-import { Headers } from 'node-fetch'
+import { Headers, Response } from 'node-fetch'
 
 var headers = new Headers();
 headers.append('X-Textrazor-Key', '2eb844810272c03a3315f39d645601d637c57543380d0b5dd98bd23e');
@@ -19,8 +19,10 @@ razor.razeUrl = function (url, result) {
   console.log(headers);
   var urlencoded = new URLSearchParams();
   urlencoded.append("extractors", "entities");
-  urlencoded.append("url", "http://" + url);
-
+  urlencoded.append("entities.filterFreebaseTypes", ["/film", "/cvg/computer_videogame", "/cvg/game_character", "/cvg/game_series", "/games/game", "/games/game_expansion", "/fictional"]);
+  urlencoded.append("entities.allowOverlap", false);
+  urlencoded.append("url", "https://" + url);
+  console.log(urlencoded)
 
   var requestOptions = {
     method: 'POST',
@@ -30,13 +32,12 @@ razor.razeUrl = function (url, result) {
   };
 
 
-  fetch("http://api.textrazor.com?extractors=entities&url=http://" + url, requestOptions).then(response => response.json()).then(response => function(response) {
+  fetch("https://api.textrazor.com", requestOptions).then(response => response.json()).then(response => {
+    console.log("respuesta:", JSON.stringify(response))
+    return JSON.stringify(response);
 
-    var respuesta = new Response(response, {headers: {"Access-Control-Allow-Origin": "*"}});
-    return respuesta;
-    
   })
-  .then(response => result(null, response));
+    .then(response => result(null, response));
 
 };
 
