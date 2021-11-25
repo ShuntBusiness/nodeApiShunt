@@ -4,6 +4,8 @@ import juegoController from '../controller/juegos.controller.js';
 import module from 'module';
 // Retrieve all juegos
 router.get('/obtenerjuegos', juegoController.findAll);//crear endpoints
+// Retrieve all personajes
+router.get("/obtenerpersonajes", juegoController.getAllCharacters);
 // Create a new juego
 router.post('/nuevojuego', juegoController.create);
 // Retrieve a single juego with id
