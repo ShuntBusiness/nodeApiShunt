@@ -45,6 +45,25 @@ videogame.findAll = function(result) {
   });
   
 };
+videogame.getAllCharacters = function (result) {
+
+  dbConn.query("SELECT * FROM CharactersxVideogames", function (err, res) {//devuelve todos los personajes de la tabla CharactersxVideogames
+
+    if (err) {
+
+      console.log("Error: ", err);
+      result(err, null);
+
+    } else {
+
+      console.log("Videogames: ", res);
+      result(null, res);
+
+    }
+
+  });
+
+};
 videogame.update = function(IdVideogame, videogame, result) {
   dbConn.query(
     "UPDATE Videogames SET IdMovie=?,MovieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdVideogame = ?",
