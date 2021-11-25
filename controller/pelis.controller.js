@@ -1,6 +1,7 @@
 "use strict";
 import peli from "../models/pelis.model.js"
 import exports from 'module';
+
 exports.findAll = function(req, res) {
   peli.findAll(function(err, peli) {
     console.log("controller");
@@ -9,6 +10,20 @@ exports.findAll = function(req, res) {
     res.send(peli);
   });
 };
+
+exports.getAllCharacters = function (req, res) {//agrega a la variable a exportar la función getAllCharacters
+
+  peli.getAllCharacters(function (err, peli) {//llama a la función getAllCharacters del model
+
+    console.log("controller");
+    if (err) res.send(err);
+    console.log("res", peli);
+    res.send(peli);
+
+  });
+
+};
+
 exports.create = function(req, res) {
   const new_peli = new peli(req.body);
   //handles null error
