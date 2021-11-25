@@ -7,6 +7,7 @@ exports.findAll = function(req, res) {
     console.log("controller");
     if (err) res.send(err);
     console.log("res", peli);
+    res.append('Access-Control-Allow-Origin', '*');
     res.send(peli);
   });
 };
@@ -18,6 +19,7 @@ exports.getAllCharacters = function (req, res) {//agrega a la variable a exporta
     console.log("controller");
     if (err) res.send(err);
     console.log("res", peli);
+    res.append('Access-Control-Allow-Origin', '*');
     res.send(peli);
 
   });
