@@ -44,6 +44,25 @@ serie.findAll = function(result) {
     }
   });
 };
+serie.getAllCharacters = function (result) {
+
+  dbConn.query("SELECT * FROM CharactersxSeries", function (err, res) {//devuelve todos los personajes de la tabla CharactersxSeries
+
+    if (err) {
+
+      console.log("Error: ", err);
+      result(err, null);
+
+    } else {
+
+      console.log("Series: ", res);
+      result(null, res);
+
+    }
+
+  });
+
+};
 serie.update = function(IdSerie, serie, result) {
   dbConn.query(
     "UPDATE Series SET IdSerie=?,SerieName=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE IdSerie = ?",
