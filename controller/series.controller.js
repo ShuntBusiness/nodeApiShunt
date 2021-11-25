@@ -9,6 +9,19 @@ exports.findAll = function(req, res) {
     res.send(serie);
   });
 };
+exports.getAllCharacters = function (req, res) {//agrega a la variable a exportar la función getAllCharacters
+
+  serie.getAllCharacters(function (err, serie) {//llama a la función getAllCharacters del model
+
+    console.log("controller");
+    if (err) res.send(err);
+    console.log("res", serie);
+    res.append('Access-Control-Allow-Origin', '*');
+    res.send(serie);
+
+  });
+
+};
 exports.create = function(req, res) {
   const new_serie = new serie(req.body);
   //handles null error
