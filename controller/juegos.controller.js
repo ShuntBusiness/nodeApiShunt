@@ -6,8 +6,22 @@ exports.findAll = function(req, res) {
     console.log("controller");
     if (err) res.send(err);
     console.log("res", juego);
+    res.append('Access-Control-Allow-Origin', '*');
     res.send(juego);
   });
+};
+exports.getAllCharacters = function (req, res) {//agrega a la variable a exportar la función getAllCharacters
+
+  juego.getAllCharacters(function (err, juego) {//llama a la función getAllCharacters del model
+
+    console.log("controller");
+    if (err) res.send(err);
+    console.log("res", juego);
+    res.append('Access-Control-Allow-Origin', '*');
+    res.send(juego);
+
+  });
+
 };
 exports.create = function(req, res) {
   const new_juego = new juego(req.body);
