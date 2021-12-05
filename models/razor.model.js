@@ -22,6 +22,7 @@ razor.razeUrl = function (url, result) {
   urlencoded.append("entities.filterFreebaseTypes", ["/film", "/cvg/computer_videogame", "/cvg/game_character", "/cvg/game_series", "/games/game", "/games/game_expansion", "/fictional"]);
   urlencoded.append("entities.allowOverlap", false);
   urlencoded.append("cleanup.mode", "cleanHTML");
+  urlencoded.append("cleanup.returnCleaned", true);
   urlencoded.append("url", "https://" + url);
   console.log(urlencoded)
 
